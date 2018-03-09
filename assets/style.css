@@ -1,0 +1,25 @@
+#jumbo {
+    text-align: center;
+    background-color: #000000;
+    color: white;
+    opacity: 50%
+} 
+#midrow {
+    background-color:#0A0B0B;
+    color: white;
+} 
+.panel-default{
+    background-color:#2f2f36;
+    color:whitesmoke;
+}
+h5{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding:2px;
+    margin:2px;
+}
+.scheduleFont{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color:whitesmoke;
+}
