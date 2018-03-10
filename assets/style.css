@@ -23,3 +23,13 @@ h5{
     font-weight: bold;
     color:whitesmoke;
 }
+input:invalid+span:after {
+    position: absolute;
+    content: '✖';
+    padding-left: 5px;
+}
+input:valid+span:after {
+    position: absolute;
+    content: '✓';
+    padding-left: 5px;
+  }
