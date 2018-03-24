@@ -20,6 +20,8 @@ var config = {
   var trainNumber =0 
  
   var currentDate = new Date()
+  console.log(currentDate)
+
   function formComplete(){
       if($('#trainName').val().trim()!=='' && $('#trainDestination').val().trim()!=='' && $('#firstTrain').val().trim()!=='' && $('#trainRate').val().trim()!==''){
           console.log("hi") 
@@ -31,41 +33,37 @@ var config = {
   }
 
   $(document).ready(function(){
-      
-    var currentTime = moment()
-    console.log(currentTime)
+      database.ref().on("child_added", function(snapshot) {
+        var object = snapshot.val()
+        var name = object.name
+        var place= object.endPoint
+        var rate = object.period
+        var start = object.startTime
+        var currentTime = moment()
+        var currentFormatedTime = moment(currentTime).format('HH:mm')
+
+        var timeAway = moment().diff(moment(start).format('HH:mm'),'minutes')
+        console.log(timeAway)
+        
+        $('#trainSchedule').append("<tr><th scope ='row'></th><td>"+name+"</td><td>"+place+"</td> <td>"+rate+"</td><td>"+start+"</td></tr>")
+        
+    })
 
       $('#submit').on('click', function(e){
           e.preventDefault()
           if (formComplete()){
                 trainName = $('#trainName').val().trim()
-                console.log(trainName)
                 destination = $('#trainDestination').val().trim()
-                console.log(destination)
                 firstTrain = $('#firstTrain').val().trim()
-                console.log(firstTrain)
                 frequency = $('#trainRate').val().trim()
-                console.log(frequency)
                 trainNumber++
                 database.ref().push({
                     trainCounter:trainNumber, name:trainName, endPoint:destination, startTime:firstTrain, period: frequency
                 })
 
-                database.ref().on("child_added", function(snapshot) {
-                    console.log(snapshot.val())
-                    // console.log(snapshot)
-                    // $('#trainSchedule').append("<tr><th scope='row'></th><td>"+database.ref().child)
-                })
+                
             }
-            database.ref('/trainCounter').set({
-                trainCounter:trainNumber
-            })
-        //     <tr>
-        //     <th scope="row">1</th>
-        //     <td>Mark</td>
-        //     <td>Otto</td>
-        //     <td>@mdo</td>
-        //   </tr>
+        
 
           })//End of submit button function
 
