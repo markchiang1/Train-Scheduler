@@ -10,14 +10,14 @@ The train's next arrival time will be displayed and how many minutes remain unti
 
 ### Key Technologies
 
-- Firebase
-- Moment.js
+* Firebase
+* Moment.js
 
 ### How this Applicaiton Works (Backend)
 
-*incorporates Firebase to host arrival and departure data.
+* incorporates Firebase to host arrival and departure data.
 
-*retrieve data from Firebase and manipulate this information with Moment.js.
+* retrieve data from Firebase and manipulate this information with Moment.js.
 
 
 ### Future Improvements
